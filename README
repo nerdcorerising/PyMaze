@@ -1,0 +1,16 @@
+PyMaze is a software robot that will learn a maze, written in Python and PyGame. It was written as a way to waste an afternoon, so it is not as polished as it could be but it works pretty well.
+
+Known caveats:
+    The traps don't work as they should. Due to the way the robot maps the maze to memory, it will eventually give up and commit suicide by jumping into the nearest trap if it patrols for long enough without finding a goal.
+
+run the __init__ script to start the program, once started use the following keys:
+        Key             Action
+        left mouse      add a wall, or take out a wall that exists
+        right mouse     clear a section of any wall, trap, or goal
+        g               place a goal where the mouse cursor is currently located
+        t               place a trap where the mouse cursor is currently located
+        n               new maze, resets memory of the robot and goals
+        s               start or stop the robot
+        -               decrease number of cells in the "grid" the maze is built upon
+        =               increase number of cells in the "grid" the maze is built upon
+        
