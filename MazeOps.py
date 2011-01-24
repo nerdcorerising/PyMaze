@@ -16,60 +16,32 @@ def AppendNeighborsRight(size, stack, dfs, pos):
     if((x + 1) <  size // 2 and dfs[x + 1][y] == 0):
         stack.append((x + 1, y, x, y))
         dfs[x + 1][y] = 1
-    if((x - 1) >= 0 and dfs[x - 1][y] == 0):
-        stack.append((x - 1, y, x, y))
-        dfs[x - 1][y] = 1
-    if((y + 1) <  size // 2 and dfs[x][y + 1] == 0):
-        stack.append((x, y + 1, x, y))
-        dfs[x][y + 1] = 1
-    if((y - 1) >= 0 and dfs[x][y - 1] == 0):
-        stack.append((x, y - 1, x, y))
-        dfs[x][y - 1] = 1
+        return True
+    return False
 
 def AppendNeighborsLeft(size, stack, dfs, pos):
     x, y = pos
     if((x - 1) >= 0 and dfs[x - 1][y] == 0):
         stack.append((x - 1, y, x, y))
         dfs[x - 1][y] = 1
-    if((y + 1) <  size // 2 and dfs[x][y + 1] == 0):
-        stack.append((x, y + 1, x, y))
-        dfs[x][y + 1] = 1
-    if((y - 1) >= 0 and dfs[x][y - 1] == 0):
-        stack.append((x, y - 1, x, y))
-        dfs[x][y - 1] = 1
-    if((x + 1) <  size // 2 and dfs[x + 1][y] == 0):
-        stack.append((x + 1, y, x, y))
-        dfs[x + 1][y] = 1
+        return True
+    return False
 
 def AppendNeighborsDown(size, stack, dfs, pos):
     x, y = pos
     if((y + 1) <  size // 2 and dfs[x][y + 1] == 0):
         stack.append((x, y + 1, x, y))
         dfs[x][y + 1] = 1
-    if((y - 1) >= 0 and dfs[x][y - 1] == 0):
-        stack.append((x, y - 1, x, y))
-        dfs[x][y - 1] = 1
-    if((x + 1) <  size // 2 and dfs[x + 1][y] == 0):
-        stack.append((x + 1, y, x, y))
-        dfs[x + 1][y] = 1
-    if((x - 1) >= 0 and dfs[x - 1][y] == 0):
-        stack.append((x - 1, y, x, y))
-        dfs[x - 1][y] = 1
+        return True
+    return False
         
 def AppendNeighborsUp(size, stack, dfs, pos):
     x, y = pos
     if((y - 1) >= 0 and dfs[x][y - 1] == 0):
         stack.append((x, y - 1, x, y))
         dfs[x][y - 1] = 1
-    if((x + 1) <  size // 2 and dfs[x + 1][y] == 0):
-        stack.append((x + 1, y, x, y))
-        dfs[x + 1][y] = 1
-    if((x - 1) >= 0 and dfs[x - 1][y] == 0):
-        stack.append((x - 1, y, x, y))
-        dfs[x - 1][y] = 1
-    if((y + 1) < size // 2 and dfs[x][y + 1] == 0):
-        stack.append((x, y + 1, x, y))
-        dfs[x][y + 1] = 1
+        return True
+    return False
                
 def reward(maze, xpos, ypos):
     if(maze[xpos][ypos] == 3):
@@ -83,7 +55,7 @@ def reward(maze, xpos, ypos):
 def Decision(xpos, ypos, gamma, oldtype, memory, maze):
     """Makes a decision based on the current state of 
     the maze and the memory."""
-    #TODO fill in
+    
     positions = []
     
     if(xpos + 1 < len(maze) and maze[xpos + 1][ypos] != 1):

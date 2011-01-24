@@ -76,28 +76,24 @@ class PyMazeMain:
         self.starty = j
         #Set the position to visited
         dfs[i][j] = 1
-        #Push the position onto the stack
-        r = random.randrange(4)
-        if(r == 0):
-            AppendNeighborsLeft(self.size, stack, dfs, (i, j))
-        elif(r == 1):
-            AppendNeighborsRight(self.size, stack, dfs, (i, j))
-        elif(r == 2):
-            AppendNeighborsUp(self.size, stack, dfs, (i, j))
-        else:
-            AppendNeighborsDown(self.size, stack, dfs, (i, j))
+        
+        #Put all the functions in a list
+        funcs = []
+        funcs.append(AppendNeighborsRight)
+        funcs.append(AppendNeighborsLeft)
+        funcs.append(AppendNeighborsUp)
+        funcs.append(AppendNeighborsDown)
+        
+        #Append the children in a random order
+        random.shuffle(funcs)
+        for x in range(4):
+            funcs[x](self.size, stack, dfs, (i, j))
         
         while(len(stack) > 0):
-                
-            r = random.randrange(4)
-            if(r == 0):
-                AppendNeighborsLeft(self.size, stack, dfs, (i, j))
-            elif(r == 1):
-                AppendNeighborsRight(self.size, stack, dfs, (i, j))
-            elif(r == 2):
-                AppendNeighborsUp(self.size, stack, dfs, (i, j))
-            else:
-                AppendNeighborsDown(self.size, stack, dfs, (i, j))
+            #Append the children in a random order
+            random.shuffle(funcs)	
+            for x in range(4):
+                funcs[x](self.size, stack, dfs, (i, j))        
             
             newi, newj, i, j = stack.pop()
             
@@ -112,11 +108,6 @@ class PyMazeMain:
             
             i, j = newi, newj
 
-        #Add the robot
-        #i = random.randrange(self.size // 2)
-        #j = random.randrange(self.size // 2)
-        #self.maze[i * 2][j * 2] = 4
-        
         self.xpos = i * 2
         self.xpos = j * 2
         
